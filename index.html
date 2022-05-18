@@ -4,6 +4,12 @@
         <meta charset="utf-8">
         <title>j's home</title>
         <link rel="stylesheet" href="navbar.css">
+        <style>
+            div#editor { 
+                padding: 16px 24px; border: 1px solid #D6D6D6; border-radius: 4px; 
+            }
+        </style>
+    
     </head>
     <body>
         <h1>Art of Living</h1>
@@ -14,18 +20,69 @@
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="news.html">News</a></li>
             <li><a href="blog.html">Blog</a></li>
+            <li><a href="paper.html">Paper</a></li>
             <li><a href="business.html">Business</a></li>
             <li><a href="about.html">About</a></li>
         </ul>
-        <h3>Sticky Navigation Bar Example</h3>
+        <h3>Contents-01</h3>
         <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
         <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit- prefix.</p>
-        <p>Some text to enable scrolling. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-        <p>Some text to enable scrolling. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-        <p>Some text to enable scrolling. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-        <p>Some text to enable scrolling. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-        <p>Some text to enable scrolling. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-        <p>Some text to enable scrolling. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-        <p>Some text to enable scrolling. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+        <p>
+            Some text to enable scrolling. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+        </p>
+        <p>
+            Some text to enable scrolling. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+        </p>
+        <p>
+            Some text to enable scrolling. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+        </p>        
+        <div class="editor-menu">
+            <button id="btn-bold"> 
+                <b>B</b> 
+            </button> 
+            <button id="btn-italic"> 
+                <i>I</i> 
+            </button> 
+            <button id="btn-underline"> 
+                <u>U</u> 
+            </button> 
+            <button id="btn-strike"> 
+                <s>S</s> 
+            </button> 
+            <button id="btn-ordered-list"> 
+                OL 
+            </button> 
+            <button id="btn-unordered-list"> 
+                UL 
+            </button> 
+            <button id="btn-image"> 
+                IMG 
+            </button> 
+        </div> 
+        <div id="editor" contenteditable="true"></div>
+
+        <script> 
+            const editor = document.getElementById('editor'); 
+            const btnBold = document.getElementById('btn-bold'); 
+            const btnItalic = document.getElementById('btn-italic'); 
+            const btnUnderline = document.getElementById('btn-underline'); 
+            const btnStrike = document.getElementById('btn-strike'); 
+            const btnOrderedList = document.getElementById('btn-ordered-list'); 
+            const btnUnorderedList = document.getElementById('btn-unordered-list'); 
+            
+            btnBold.addEventListener('click', function () {
+                setStyle('bold');
+            });
+            btnItalic.addEventListener('click', function () { setStyle('italic'); }); 
+            btnUnderline.addEventListener('click', function () { setStyle('underline'); }); 
+            btnStrike.addEventListener('click', function () { setStyle('strikeThrough') }); 
+            btnOrderedList.addEventListener('click', function () { setStyle('insertOrderedList'); }); 
+            btnUnorderedList.addEventListener('click', function () { setStyle('insertUnorderedList'); }); 
+            
+            function setStyle(style) { document.execCommand(style); focusEditor(); } 
+
+        // 버튼 클릭 시 에디터가 포커스를 잃기 때문에 다시 에디터에 포커스를 해줌 
+            function focusEditor() { editor.focus({preventScroll: true}); }
+        </script>
     </body>
 </html>
